@@ -1,3 +1,4 @@
+inherit rust-dirs
 # add crate fetch support
 inherit crate-fetch
 

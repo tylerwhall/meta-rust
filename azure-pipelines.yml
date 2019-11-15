@@ -14,9 +14,10 @@ container: cardoe/yocto:pyro
 steps:
 - script: |
     pwd
-    git clone --depth 1 -b master --single-branch git://git.yoctoproject.org/poky.git poky
+    git clone --depth 1 -b master --single-branch git://git.yoctoproject.org/poky.git
     git clone --depth 1 -b master --single-branch git://git.openembedded.org/meta-openembedded.git poky/meta-openembedded
   displayName: 'Fetch layers'
+  workingDirectory: ../..
 
 - checkout: self
   path: poky/meta-rust

@@ -27,7 +27,7 @@ steps:
     export TEMPLATECONF=meta-rust/conf
     export MACHINE=qemux86-64
     source oe-init-build-env
-    bitbake rustfmt | cat
+    bitbake m4-native | cat
   displayName: 'Bitbake'
 
 - script: |

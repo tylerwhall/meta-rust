@@ -12,19 +12,18 @@ pool:
 container: cardoe/yocto:pyro
 
 steps:
+- checkout: self
+
 - script: |
+    cd $(Pipeline.Workspace)
     pwd
     git clone --depth 1 -b master --single-branch git://git.yoctoproject.org/poky.git
     git clone --depth 1 -b master --single-branch git://git.openembedded.org/meta-openembedded.git poky/meta-openembedded
+    ln -s $(Build.Repository.LocalPath) poky/meta-rust
   displayName: 'Fetch layers'
-  workingDirectory: ../..
-
-- checkout: self
-  path: poky/meta-rust
 
 - script: |
     pwd
-    ls
-    ls ..
-    ls ../..
+    ls $(Pipeline.Workspace)
+    ls $(Pipeline.Workspace)/poky
   displayName: 'ls'

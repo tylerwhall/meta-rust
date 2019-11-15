@@ -12,10 +12,18 @@ pool:
 container: cardoe/yocto:pyro
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: |
+    pwd
+    git clone --depth 1 -b master --single-branch git://git.yoctoproject.org/poky.git poky
+    git clone --depth 1 -b master --single-branch git://git.openembedded.org/meta-openembedded.git poky/meta-openembedded
+  displayName: 'Fetch layers'
+
+- checkout: self
+  path: poky/meta-rust
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    pwd
+    ls
+    ls ..
+    ls ../..
+  displayName: 'ls'

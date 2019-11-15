@@ -23,6 +23,14 @@ steps:
   displayName: 'Fetch layers'
 
 - script: |
+    cd $(Pipeline.Workspace)/poky
+    export TEMPLATECONF=meta-rust/conf
+    export MACHINE=qemux86-64
+    source oe-init-build-env
+    bitbake rustfmt
+  displayName: 'Bitbake'
+
+- script: |
     pwd
     ls $(Pipeline.Workspace)
     ls $(Pipeline.Workspace)/poky
